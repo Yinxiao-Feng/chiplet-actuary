@@ -2,6 +2,7 @@ from ChipletHL import package
 from ChipletHL.package import Package, OS, FO, SI
 from ChipletHL.chip import Chip
 from ChipletHL.module import Module
+from typing import Set, Dict, Tuple
 import math
 
 
@@ -15,14 +16,14 @@ def PHYarea(numberpin, pitch=0.055, depth=1) -> float:
     return width * depth
 
 
-def get_all_packages(Packages: set) -> set[Package]:
+def get_all_packages(Packages: set) -> Set[Package]:
     package_set = set()
     for p in Packages:
         package_set.add(p)
     return package_set
 
 
-def get_all_modules(Packages: set) -> set[Module]:
+def get_all_modules(Packages: set) -> Set[Module]:
     '''
     return a set of all modules contained in all systems
     '''
@@ -34,7 +35,7 @@ def get_all_modules(Packages: set) -> set[Module]:
     return module_set
 
 
-def get_all_chips(Packages: set) -> set[Chip]:
+def get_all_chips(Packages: set) -> Set[Chip]:
     '''
     return a set of all chips contained in all systems
     '''
@@ -85,7 +86,7 @@ def total_NRE(Packages: set):
     return total_module_NRE(Packages) + total_chip_NRE(Packages) + total_package_NRE(Packages)
 
 
-def module_amortized_unit_cost(m: Module, Packages: dict[Package, int]) -> float:
+def module_amortized_unit_cost(m: Module, Packages: Dict[Package, int]) -> float:
     '''
     return the amortized NRE cost of moudle m
     '''
@@ -95,7 +96,7 @@ def module_amortized_unit_cost(m: Module, Packages: dict[Package, int]) -> float
     return m.NRE() / total_volume
 
 
-def chip_amortized_unit_cost(c: Chip, Packages: dict[Package, int]) -> float:
+def chip_amortized_unit_cost(c: Chip, Packages: Dict[Package, int]) -> float:
     '''
     return the amortized NRE cost of chip c
     '''
@@ -106,7 +107,7 @@ def chip_amortized_unit_cost(c: Chip, Packages: dict[Package, int]) -> float:
     return c.NRE() / total_volume
 
 
-def package_amortized_unit_cost(p: Package, Packages: dict[Package, int]) -> float:
+def package_amortized_unit_cost(p: Package, Packages: Dict[Package, int]) -> float:
     '''
     return the amortized NRE cost of package p
     '''
@@ -117,7 +118,7 @@ def package_amortized_unit_cost(p: Package, Packages: dict[Package, int]) -> flo
     return p.NRE() / total_volume
 
 
-def module_amortized_cost(Packages: dict[Package, int]) -> dict[Package, float]:
+def module_amortized_cost(Packages: Dict[Package, int]) -> Dict[Package, float]:
     '''
     return the amortized module NRE cost for each package
     '''
@@ -130,7 +131,7 @@ def module_amortized_cost(Packages: dict[Package, int]) -> dict[Package, float]:
     return cost
 
 
-def chip_amortized_cost(Packages: dict[Package, int]) -> dict[Package, float]:
+def chip_amortized_cost(Packages: Dict[Package, int]) -> Dict[Package, float]:
     '''
     return the amortized chip NRE cost for each package
     '''
@@ -142,7 +143,7 @@ def chip_amortized_cost(Packages: dict[Package, int]) -> dict[Package, float]:
     return cost
 
 
-def package_amortized_cost(Packages: dict[Package, int]) -> dict[Package, float]:
+def package_amortized_cost(Packages: Dict[Package, int]) -> Dict[Package, float]:
     '''
     return the amortized package NRE cost for each package
     '''
@@ -152,7 +153,7 @@ def package_amortized_cost(Packages: dict[Package, int]) -> dict[Package, float]
     return cost
 
 
-def system_total_apporitioned_NRE_cost(Packages: dict[Package, int]) -> dict[Package, tuple[float]]:
+def system_total_apporitioned_NRE_cost(Packages: Dict[Package, int]) -> Dict[Package, Tuple[float]]:
     '''
     return the amortized total NRE cost for each package
     '''
