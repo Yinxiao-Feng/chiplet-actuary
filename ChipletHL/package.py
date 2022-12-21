@@ -1,5 +1,6 @@
 from ChipletHL.chip import Chip
 from ChipletHL.module import Module
+from typing import Tuple, Dict
 from . import spec
 import math
 
@@ -77,7 +78,7 @@ class Package():
     def cost_package(self):
         pass
 
-    def cost_RE(self) -> tuple[float, float, float, float, float]:
+    def cost_RE(self) -> Tuple[float, float, float, float, float]:
         '''
         (RE_raw_chips, RE_defect_chips, RE_raw_package, RE_defect_pacakge, RE_wasted_KGD)
         '''
@@ -148,7 +149,7 @@ class OS(Package):
 class Advanced(Package):
     def __init__(self,
                  name: str,
-                 chips: dict[Chip, int],
+                 chips: Dict[Chip, int],
                  NRE_cost_factor: float,
                  NRE_cost_fixed: float,
                  wafer_cost: float,
