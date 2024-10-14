@@ -1,6 +1,5 @@
-from ChipletHL.module import Module
-from ChipletHL.module import D2D
-from . import spec
+from chiplet_actuary.module import Module, D2D
+import chiplet_actuary.spec as spec
 import math
 
 

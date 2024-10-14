@@ -1,4 +1,4 @@
-from . import spec
+import chiplet_actuary.spec as spec
 
 
 class Module():

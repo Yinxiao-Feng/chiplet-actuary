@@ -1,7 +1,6 @@
-from ChipletHL import package
-from ChipletHL.package import Package, OS, FO, SI
-from ChipletHL.chip import Chip
-from ChipletHL.module import Module
+from chiplet_actuary.package import Package, OS, FO, SI
+from chiplet_actuary.chip import Chip
+from chiplet_actuary.module import Module
 import math
 
 

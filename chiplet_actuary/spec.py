@@ -1,6 +1,6 @@
 from configparser import ConfigParser
 
-parameter_path = "spec/parameter.ini"
+parameter_path = "parameter.ini"
 
 param = ConfigParser()
 param.read(parameter_path)

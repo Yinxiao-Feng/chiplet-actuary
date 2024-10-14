@@ -1,6 +1,6 @@
-from ChipletHL.chip import Chip
-from ChipletHL.module import Module
-from . import spec
+from chiplet_actuary.chip import Chip
+from chiplet_actuary.module import Module
+import chiplet_actuary.spec as spec
 import math
 
 

@@ -1,11 +1,11 @@
 from typing import Tuple
 import math
 import pandas as pd
-from ChipletHL import module
-from ChipletHL import chip
-from ChipletHL import package
-from ChipletHL import utils
-from ChipletHL import spec
+from chiplet_actuary import module
+from chiplet_actuary import chip
+from chiplet_actuary import package
+from chiplet_actuary import utils
+from chiplet_actuary import spec
 
 
 def yield_area() -> pd.DataFrame:
@@ -150,7 +150,7 @@ def single_system_RE_cost(num_chip: int, node: str) -> pd.DataFrame:
 
     RE_sheet = pd.DataFrame()
     for i in range(len(Areas)):
-        RE_sheet = RE_sheet.append(
+        RE_sheet = RE_sheet._append(
             pd.DataFrame.from_records([src[i], irc[i][0:5], irc[i][5:10], irc[i][10:15], ()],
                                       index=[[Areas[i]] * 5,
                                              ['SoC OS', '2.5D OS', '2.5D FO', '2.5D SI', '']],
@@ -198,7 +198,7 @@ def single_system_total_cost(num_chip: int, node: str) -> pd.DataFrame:
         + ['SI_RE'] + ['MCM_module_NRE', 'MCM_chip_NRE']*num_chip + ['D2DPHY_NRE',
                                           'SI NRE']
     for i in range(len(volumes)):
-        cost_sheet = cost_sheet.append(
+        cost_sheet = cost_sheet._append(
             pd.DataFrame.from_records([cost[i]], index=[volumes[i]], columns=col).div(soc_cost_0))
 
     return cost_sheet.round(3)
@@ -246,7 +246,7 @@ def AMD_cost() -> pd.DataFrame:
 
     cost_sheet = pd.DataFrame()
 
-    cost_sheet = cost_sheet.append(pd.DataFrame().from_records(cost,
+    cost_sheet = cost_sheet._append(pd.DataFrame().from_records(cost,
                                                                index=['16', '24', '32', '48', '64'],
                                                                columns=[
                                                                    'mcm raw chips',
@@ -310,7 +310,7 @@ def single_chiplet_multiple_systems(volume: int) -> pd.DataFrame:
 
     cost_sheet = pd.DataFrame()
 
-    cost_sheet = cost_sheet.append(pd.DataFrame().from_records(
+    cost_sheet = cost_sheet._append(pd.DataFrame().from_records(
         cost,
         index=['1', '2', '4'],
         columns=[
@@ -380,7 +380,7 @@ def one_center_multiple_extensions(volume: int) -> pd.DataFrame:
 
     cost_sheet = pd.DataFrame()
 
-    cost_sheet = cost_sheet.append(pd.DataFrame().from_records(
+    cost_sheet = cost_sheet._append(pd.DataFrame().from_records(
         cost,
         index=['0', '1', '2', '4'],
         columns=[
@@ -470,7 +470,7 @@ def a_few_sockets_multiple_collocations(volume: int) -> pd.DataFrame:
 
     cost_sheet = pd.DataFrame()
 
-    cost_sheet = cost_sheet.append(pd.DataFrame().from_records(
+    cost_sheet = cost_sheet._append(pd.DataFrame().from_records(
         cost,
         index=['1', '2', '3', '4', '5'],
         columns=[

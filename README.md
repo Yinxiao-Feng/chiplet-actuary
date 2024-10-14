@@ -1,26 +1,21 @@
-# Chiplet Instruction
+# Chiplet Actuary
 
-### Overview
+*Chiplet Actuary* is a quantitative cost model for multi-chiplet systems.
 
-dac2022
-│  exploration.py
-│  main.py
-│  README.md
-│  
-├─ChipletHL
-│     chip.py
-│     module.py
-│     package.py
-│     spec.py
-│     utils.py
-│     __init__.py
-│          
-├─spec
-│      parameter.ini
+If you use *Chiplet Actuary* in your research, we would appreciate the following citation in any publications to which it has contributed:
 
-### Parameters
+Yinxiao Feng and Kaisheng Ma. Chiplet Actuary: A Quantitative Cost Model and Multi-Chiplet Architecture Exploration. In Proceedings of the 59th ACM/IEEE Design Automation Conference (DAC), 2024.
 
-If applying the model to some cases makes it necessary to include related data as the parameters of the model.
+### Usage
 
+**Requirements:**
+ - Python 3.12
+ - Pandas 2.2
+
+Modify the following files to include related (up to date) data, then run:
 - parameter.ini
-- spec.py
+- src/spec.py
+```
+python main.py
+```
+
